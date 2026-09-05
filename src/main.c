@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include "eulero.h"
 #include "newton.h"
+#include "methods_utils.h"
 
 double f(double t, double u) {
     return -4.0*u + (t*t)*sin(2.0*t);
@@ -12,14 +13,6 @@ double fder(double t, double u) {
     return -4.0;
 }
 
-struct vector generaTempi(double a, double b, double h){
-	struct vector tempi = {((b-a)/h)+1, malloc(((b-a)/h+1)*sizeof(double))};
-
-	for (unsigned int i = 0; i < tempi.dim; i++){
-		tempi.data[i] = a + h*i;
-	}
-	return tempi;
-}
 
 // test function
 int main(){
