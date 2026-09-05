@@ -5,7 +5,8 @@ Attualmente gli algoritmi implementati sono:
 - Metodo di newton per la ricerca di zeri per equazioni non lineari
 - Metodo di Eulero esplicito
 - Metodo di Eulero implicito
-- Heun
+- Crank-Nicolson
 
 TODO:
+- Heun
 - Crank-Nicolson
