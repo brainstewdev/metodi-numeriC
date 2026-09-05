@@ -8,5 +8,4 @@ Attualmente gli algoritmi implementati sono:
 - Crank-Nicolson
 
 TODO:
-- Heun
-- Crank-Nicolson
+- metodi per la quadratura
