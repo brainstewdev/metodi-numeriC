@@ -1,9 +1,9 @@
 # perche' mai stai guardango un makefile mah...
 # NON mi dire ogni comando che esegui... ti prego...
 .SILENT: 
-build/test: build/newton.o build/eulero.o build/utils.o src/main.c | build
+build/test: build/newton.o build/eulero.o build/utils.o build/cnic.o src/main.c | build
 	echo "Compilando..."
-	gcc -Iinclude src/main.c build/newton.o build/eulero.o  build/utils.o -lm -o build/test 
+	gcc -Iinclude src/main.c build/newton.o build/eulero.o build/cnic.o build/utils.o -lm -o build/test 
 # eh gia
 build:
 	mkdir -p build
@@ -14,6 +14,8 @@ build/newton.o: src/newton.c | build
 	gcc -Iinclude -c src/newton.c -o build/newton.o
 build/eulero.o: src/eulero.c | build
 	gcc -Iinclude -c src/eulero.c -o build/eulero.o
+build/cnic.o: src/cnic.c | build
+	gcc -Iinclude -c src/cnic.c -o build/cnic.o
 build/utils.o: src/methods_utils.c | build
 	gcc -Iinclude -c src/methods_utils.c -o build/utils.o
 .PHONY: build_and_clean
