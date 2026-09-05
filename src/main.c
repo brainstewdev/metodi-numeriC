@@ -17,12 +17,28 @@ double fder(double t, double u) {
 
 
 // test function
-int main(){
-	struct vector T = generaTempi(0,1,0.1);
-	struct vector Y = euleroEsplicito(f, &T, 1.0, 1e-6, 0.1);
-	struct vector Y2 = euleroImplicito(f, fder, &T, 1.0, 1e-6, 0.1);
-	struct vector C = cnic(f, fder, &T, 1.0, 1e-6, 0.1);
-	struct vector H = heun(f,&T,1.0,0.1);
+int main(int argc, char** argv){
+
+	struct args parsed_args= {1.0,2.0,0.1};
+
+
+	// argp_parse (&argp, argc, argv, 0, 0, &arguments);
+	argp_parse(&arguments_structure, argc, argv, 0, 0, &parsed_args);
+
+	double a = parsed_args.a;
+	double b = parsed_args.b;
+	double h = parsed_args.h;
+
+	if(a >= b){
+		printf("a deve essere < di b.\n");
+		return -1;
+	}
+
+	struct vector T = generaTempi(a,b,h);
+	struct vector Y = euleroEsplicito(f, &T, 1.0, 1e-6, h);
+	struct vector Y2 = euleroImplicito(f, fder, &T, 1.0, 1e-6, h);
+	struct vector C = cnic(f, fder, &T, 1.0, 1e-6, h);
+	struct vector H = heun(f,&T,1.0,h);
 	
 	
 	// stampa una tabella per i dati

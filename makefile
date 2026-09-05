@@ -4,6 +4,10 @@
 build/test: build/newton.o build/eulero.o build/utils.o build/heun.o build/cnic.o src/main.c | build
 	echo "Compilando..."
 	gcc -Iinclude src/main.c build/newton.o build/eulero.o build/cnic.o build/heun.o build/utils.o -lm -o build/test 
+.PHONY: debug
+debug: build/newton.o build/eulero.o build/utils.o build/heun.o build/cnic.o src/main.c | build
+	echo "Compilando versione debug..."
+	gcc -Iinclude src/main.c build/newton.o build/eulero.o build/cnic.o build/heun.o build/utils.o -lm -o build/test -g
 # eh gia
 build:
 	mkdir -p build
